@@ -7,6 +7,8 @@
 		var guesses = 12;
 		var wi = 0;
 		var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
+		var spiderInfo = "<img src=\"images/spider.jpg\" id=\"photo\"><br>The spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.";
+		var baboonInfo = "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The baboon is native to Africa. They are known for their really bizzare behinds!";
 window.onload = function init() {
 	wins = 0;
 	currentBoard = ["_","_","_","_","_","_"];
@@ -74,6 +76,14 @@ document.onkeyup = function(event) {
 	usedLetters[li] = currentLetter; // <---  adds letter to used letter array
 	li++;
 	guesses--;
+	if(winCheck()){
+		if (words[wi]=="spider"){
+			document.querySelector("#info-screen").innerHTML = spiderInfo;
+		}
+		if (words[wi]=="baboon"){
+			document.querySelector("#info-screen").innerHTML = baboonInfo;
+		}
+	}
 	console.log(currentBoard);
 	document.querySelector("#board").innerHTML = currentBoard;
 	document.querySelector("#used-letters").innerHTML = usedLetters;
