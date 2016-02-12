@@ -7,8 +7,9 @@
 		var guesses = 12;
 		var wi = 0;
 		var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
-		var spiderInfo = "<img src=\"images/spider.jpg\" id=\"photo\"><br>The spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.";
-		var baboonInfo = "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The baboon is native to Africa. They are known for their really bizzare behinds!";
+		//  info added to screen when player wins  ---->
+		var spiderInfo = "<img src=\"images/spider.jpg\" id=\"photo\"><br>The spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.<audio autoplay><source src=\"audio/spider.wav\" type=\"audio/mpeg\"></audio>";
+		var baboonInfo = "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The baboon is native to Africa. They are known for their really bizzare behinds!<audio autoplay><source src=\"audio/baboon.wav\" type=\"audio/mpeg\"></audio>";
 window.onload = function init() {
 	wins = 0;
 	currentBoard = ["_","_","_","_","_","_"];
@@ -54,7 +55,6 @@ document.onkeyup = function(event) {
 		return;
 	}
 	if(winCheck()){
-		wins++;
 		wi++;
 		newGame();
 		return;
@@ -77,6 +77,8 @@ document.onkeyup = function(event) {
 	li++;
 	guesses--;
 	if(winCheck()){
+		wins++;
+		document.querySelector("#wins").innerHTML = "Wins: "+wins;
 		if (words[wi]=="spider"){
 			document.querySelector("#info-screen").innerHTML = spiderInfo;
 		}
