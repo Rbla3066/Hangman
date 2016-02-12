@@ -6,15 +6,24 @@
 <body>
 	<script type="text/javascript">
 		//    Initial values    ------------>
+		var currentBoard = "_____"
+		var wins = 0;
+		var usedLetter = [];
+		var currentWord = "spider";
+		var li = 0;
+		var guesses = 12;
+		var wi = 0;
+		var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
 window.onload = function init() {
-	var wins = 0;
-	var currentBoard = "_____";
-	var usedLetters = [];
-	var currentWord = "spider";
-	var li = 0;
-	var guesses = 12;
-	var wi = 0;       //  <----word index used for choosing current word
-	var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
+	wins = 0;
+	currentBoard = "_____";
+	usedLetters = [];
+	currentWord = "spider";
+	li = 0;
+	guesses = 12;
+	wi = 0;       //  <----word index used for choosing current word
+	words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
+	console.log("hello");
 }
 //  function called when a player wins or loses a game ----->
 function newGame() {
@@ -62,11 +71,13 @@ document.onkeyup = function(event) {
 			return; 
 		}
 	}
-	//  checks if current letter is in the current word   ---->
+	//  ??  checks if current letter is in the current word ??  ---->
 	for (var i=0; i<currentWord.length; i++){
-		if (currentWord[i]===currentLetter){
-			//   reveals current letter in the play board  ----->
-			currentBoard[i] = currentLetter.toUpperCase();
+		var currentWordLetter = currentWord[i];
+		var newLetter = currentLetter.toUpperCase();
+		if (currentWordLetter==currentLetter){
+			//   reveals current letter in the play board NOT WORKING ??? ----->
+			currentBoard[i] = newLetter;
 		}
 	}
 	usedLetters[li] = currentLetter; // <---  adds letter to used letter array
@@ -77,13 +88,12 @@ document.onkeyup = function(event) {
 	document.querySelector("#guesses").innerHTML = "Guesses left:" + guesses;
 }
 	</script>
-	<div id="board">"_____"</div>
+	<div id="board">_____</div>
 	<br>
-	<div id="wins">"Wins: 0"</div>
+	<div id="wins">Wins: 0</div>
 	<br>
 	<p>Letters used:</p>
-	<br>
 	<div id="used-letters"></div>
-	<div id="guesses">"Guesses Left: 12"</div>
+	<div id="guesses">Guesses Left: 12</div>
 </body>
 </html>
