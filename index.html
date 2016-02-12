@@ -6,7 +6,7 @@
 <body>
 	<script type="text/javascript">
 		//    Initial values    ------------>
-		var currentBoard = "_____"
+		var currentBoard = ["_","_","_","_","_"];
 		var wins = 0;
 		var usedLetter = [];
 		var currentWord = "spider";
@@ -16,7 +16,7 @@
 		var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
 window.onload = function init() {
 	wins = 0;
-	currentBoard = "_____";
+	currentBoard = ["_","_","_","_","_"];
 	usedLetters = [];
 	currentWord = "spider";
 	li = 0;
@@ -30,11 +30,11 @@ function newGame() {
 	guesses = 12;
 	usedLetters = [];
 	currentWord = words[wi];
-	currentBoard = "";
+	currentBoard = [];
 	li = 0;      // <--letter index used for assigning values to used letters array
 	//   creates a blank board for the current word ---->
 	for (var j=0; j<currentWord.length; j++){
-		currentBoard += "_";
+		currentBoard[j] = "_";
 	}
 	document.querySelector("#board").innerHTML = currentBoard;
 	document.querySelector("#wins").innerHTML = "Wins: "+wins;
@@ -73,22 +73,21 @@ document.onkeyup = function(event) {
 	}
 	//  ??  checks if current letter is in the current word ??  ---->
 	for (var i=0; i<currentWord.length; i++){
-		var currentWordLetter = currentWord[i];
-		var newLetter = currentLetter.toUpperCase();
-		if (currentWordLetter==currentLetter){
+		if (currentWord[i]==currentLetter){
 			//   reveals current letter in the play board NOT WORKING ??? ----->
-			currentBoard[i] = newLetter;
+			currentBoard[i] = currentLetter.toUpperCase();
 		}
 	}
 	usedLetters[li] = currentLetter; // <---  adds letter to used letter array
 	li++;
 	guesses--;
+	console.log(currentBoard);
 	document.querySelector("#board").innerHTML = currentBoard;
 	document.querySelector("#used-letters").innerHTML = usedLetters;
 	document.querySelector("#guesses").innerHTML = "Guesses left:" + guesses;
 }
 	</script>
-	<div id="board">_____</div>
+	<div id="board">_,_,_,_,_</div>
 	<br>
 	<div id="wins">Wins: 0</div>
 	<br>
