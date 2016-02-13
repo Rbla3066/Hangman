@@ -6,10 +6,15 @@
 		var li = 0;
 		var guesses = 12;
 		var wi = 0;
-		var words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
-		//  info added to screen when player wins  ---->
-		var spiderInfo = "<img src=\"images/spider.jpg\" id=\"photo\"><br>The spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.<audio autoplay><source src=\"audio/spider.wav\" type=\"audio/mpeg\"></audio>";
-		var baboonInfo = "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The baboon is native to Africa. They are known for their really bizzare behinds!<audio autoplay><source src=\"audio/baboon.wav\" type=\"audio/mpeg\"></audio>";
+		var words = ["spider","baboon","gorilla","howler","macaque","proboscis","orangutan"];
+		//  info, picture, and sound added to screen when player wins  ---->
+		var spiderInfo = "<img src=\"images/spider.jpg\" id=\"photo\"><br>The Spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.<audio autoplay><source src=\"audio/spider.wav\" type=\"audio/mpeg\"></audio>";
+		var baboonInfo = "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The Baboon is native to Africa. They are known for their really bizzare behinds!<audio autoplay><source src=\"audio/baboon.wav\" type=\"audio/mpeg\"></audio>";
+		var gorillaInfo = "<img src=\"images/gorilla.jpg\" id=\"photo\"><br>The Gorilla is a ground dwelling ape native to Africa. Males are known to be aggressive. Hear the sound of them pounding on their chest.<audio autoplay><source src=\"audio/gorilla.wav\" type=\"audio/mpeg\"></audio>";
+		var howlerInfo = "<img src=\"images/howler.jpg\" id=\"photo\"><br>The Howler monkey is native to South and Central South America. They are known for their loud 'howl' call. The sound can travel up to a mile.<audio autoplay><source src=\"audio/howler.wav\" type=\"audio/mpeg\"></audio>";
+		var macaqueInfo = "<img src=\"images/macaque.jpg\" id=\"photo\"><br>The Macaque is the most widespread primate in the world apart from humans. They are known to live in densely populated cities, stealing food from local vendors. They have even been seen trading stolen jewelry for food. Bad monkeys!<audio autoplay><source src=\"audio/macaque.wav\" type=\"audio/mpeg\"></audio>";
+		var proboscisInfo = "<img src=\"images/proboscis.jpg\" id=\"photo\"><br>The Proboscis monkey is native to Indonesia. They are best known for their strange noses, growing up to 4 inches!<audio autoplay><source src=\"audio/proboscis.wav\" type=\"audio/mpeg\"></audio>";
+		var orangutanInfo = "<img src=\"images/orangutan.jpg\" id=\"photo\"><br>The Orangutan is an ape native to Indonesia and Malaysia. They are among the most intelligent primates, using tools and even constructing their own beds from branches and leaves!<audio autoplay><source src=\"audio/proboscis.wav\" type=\"audio/mpeg\"></audio>";
 window.onload = function init() {
 	wins = 0;
 	currentBoard = ["_","_","_","_","_","_"];
@@ -18,7 +23,7 @@ window.onload = function init() {
 	li = 0;
 	guesses = 12;
 	wi = 0;       //  <----word index used for choosing current word
-	words = ["spider","baboon","gorilla","howler","macaque","pygmy","mandrill","rhesus","orangutan"];
+	words = ["spider","baboon","gorilla","howler","macaque","proboscis","orangutan"];
 	console.log("hello");
 }
 //  function called when a player wins or loses a game ----->
@@ -84,6 +89,21 @@ document.onkeyup = function(event) {
 		}
 		if (words[wi]=="baboon"){
 			document.querySelector("#info-screen").innerHTML = baboonInfo;
+		}
+		if (words[wi]=="gorilla"){
+			document.querySelector("#info-screen").innerHTML = gorillaInfo;
+		}
+		if (words[wi]=="howler"){
+			document.querySelector("#info-screen").innerHTML = howlerInfo;
+		}
+		if (words[wi]=="macaque"){
+			document.querySelector("#info-screen").innerHTML = macaqueInfo;
+		}
+		if (words[wi]=="proboscis"){
+			document.querySelector("#info-screen").innerHTML = proboscisInfo;
+		}
+		if (words[wi]=="orangutan"){
+			document.querySelector("#info-screen").innerHTML = orangutanInfo;
 		}
 	}
 	console.log(currentBoard);

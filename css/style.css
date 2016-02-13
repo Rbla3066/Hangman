@@ -5,11 +5,11 @@
 	color: black;
 	font-size: 24px;
 	margin-top: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 54px;
 	font-weight: bold;
 	border-style: double;
 	border-width: 5px;
-	border-color: #99FF66;
+	border-color: #99CC66;
 }
 #hangman {
 	color: white;
@@ -17,6 +17,7 @@
 	color: #d7ceb2;
 	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
 	font-size: 90px;
+	font-weight: bold;
 	font-family: 'Indie Flower', cursive;
 	letter-spacing: 10px;
 	margin-left: 150px;
@@ -43,7 +44,7 @@
 	letter-spacing: 15px;
 	border-style: solid;
 	border-width: 0px;
-	border-color: #99FF66;
+	border-color: #99CC66;
 	border-bottom-width: 2px;
 }
 #wrapper {
@@ -61,6 +62,10 @@
 	border-bottom-width: 99px;
 	margin-top: 50px;
 	background-color: #d7ceb2;
+}
+#copyright {
+		text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+		color: white;
 }
 #photo {
 	height: 180px;
