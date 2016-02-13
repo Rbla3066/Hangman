@@ -81,8 +81,10 @@ document.onkeyup = function(event) {
 	usedLetters[li] = currentLetter; // <---  adds letter to used letter array
 	li++;
 	guesses--;
-	if(winCheck()){
-		wins++;
+	if(winCheck() || guesses == 0){
+		if (winCheck()){
+			wins++;
+		}
 		document.querySelector("#wins").innerHTML = "Wins: "+wins;
 		if (words[wi]=="spider"){
 			document.querySelector("#info-screen").innerHTML = spiderInfo;
