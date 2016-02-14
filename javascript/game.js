@@ -23,7 +23,7 @@ window.onload = function init() {
 	li = 0;
 	guesses = 12;
 	wi = 0;       //  <----word index used for choosing current word
-	words = ["spider","baboon","kellan","gorilla","howler","macaque","proboscis","orangutan"];
+	words = ["spider","baboon","gorilla","howler","macaque","proboscis","orangutan"];
 	console.log("hello");
 }
 //  function called when a player wins or loses a game ----->
