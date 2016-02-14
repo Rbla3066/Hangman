@@ -9,7 +9,8 @@
 	font-weight: bold;
 	border-style: double;
 	border-width: 5px;
-	border-color: #99CC66;
+	border-color: #d7ceb2;
+	background-color: #99CC66;
 }
 #hangman {
 	color: white;
@@ -44,7 +45,7 @@
 	letter-spacing: 15px;
 	border-style: solid;
 	border-width: 0px;
-	border-color: #99CC66;
+	border-color: #d7ceb2;
 	border-bottom-width: 2px;
 }
 #wrapper {
@@ -69,6 +70,11 @@
 }
 #photo {
 	height: 180px;
+	border-style: solid;
+	border-width: 3px;
+}
+#kellan-photo {
+	height: 200px;
 	border-style: solid;
 	border-width: 3px;
 }
