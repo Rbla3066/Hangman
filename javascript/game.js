@@ -42,6 +42,9 @@ var game = {
 		return true;
 	}
 }
+function isLetter(str) {
+  return str.length === 1 && str.match(/[a-z]/i);
+}
 String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
@@ -51,26 +54,28 @@ document.onkeyup = function(event) {
 		return;
 	}
 	var currentLetter = String.fromCharCode(event.keyCode).toLowerCase();
-	for (var t=0; t<game.usedLetters.length; t++){  
-		if (currentLetter==game.usedLetters[t]){
-			return; 
+	if (isLetter(currentLetter)){
+		for (var t=0; t<game.usedLetters.length; t++){  
+			if (currentLetter==game.usedLetters[t]){
+				return; 
+			}
 		}
-	}
-	for (var i=0; i<game.currentWord.length; i++){
-		if (game.currentWord.charAt(i)==currentLetter){
-			game.currentBoard = game.currentBoard.replaceAt(i, currentLetter.toUpperCase());
+		for (var i=0; i<game.currentWord.length; i++){
+			if (game.currentWord.charAt(i)==currentLetter){
+				game.currentBoard = game.currentBoard.replaceAt(i, currentLetter.toUpperCase());
+			}
 		}
-	}
-	game.usedLetters.push(currentLetter);
-	game.guesses--;
-	if(game.winCheck() || game.guesses == 0){
-		if (game.winCheck()){
-			game.wins++;
+		game.usedLetters.push(currentLetter);
+		game.guesses--;
+		if(game.winCheck() || game.guesses == 0){
+			if (game.winCheck()){
+				game.wins++;
+			}
+			document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
+			document.querySelector("#info-screen").innerHTML = bio[game.currentWord];
 		}
-		document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
-		document.querySelector("#info-screen").innerHTML = bio[game.currentWord];
+		document.querySelector("#board").innerHTML = game.currentBoard;
+		document.querySelector("#used-letters").innerHTML = game.usedLetters;
+		document.querySelector("#guesses").innerHTML = "Guesses left: " + game.guesses;
 	}
-	document.querySelector("#board").innerHTML = game.currentBoard;
-	document.querySelector("#used-letters").innerHTML = game.usedLetters;
-	document.querySelector("#guesses").innerHTML = "Guesses left: " + game.guesses;
 }
