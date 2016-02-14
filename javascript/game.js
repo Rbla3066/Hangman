@@ -12,7 +12,7 @@ var bio = {
 
 var game = {
 	'wins' : 0,
-	'currentBoard' : ["_","_","_","_","_","_"],
+	'currentBoard' : '______',
 	'usedLetters' : [],
 	'words' : ["spider","baboon","gorilla","howler","macaque","proboscis","orangutan"],
 	'guesses' : 12,
@@ -21,9 +21,9 @@ var game = {
 	newGame : function(){
 		game.gameNumber++;
 		game.currentWord = game.words[game.gameNumber];
-		var newBoard = [];
+		var newBoard = "";
 		for(var i=0; i<game.currentWord.length; i++){
-			newBoard.push('_');
+			newBoard += "_";
 		}
 		game.currentBoard = newBoard;
 		game.guesses = 12;
@@ -35,12 +35,15 @@ var game = {
 	},
 	winCheck : function(){
 		for(var g=0; g < game.currentBoard.length; g++){
-			if(game.currentBoard[g]=="_"){
+			if(game.currentBoard.charAt(g)=="_"){
 				return false;
 			}   
 		}
 		return true;
 	}
+}
+String.prototype.replaceAt=function(index, character) {
+    return this.substr(0, index) + character + this.substr(index+character.length);
 }
 document.onkeyup = function(event) {
 	if (game.guesses == 0 || game.winCheck()){
@@ -54,8 +57,8 @@ document.onkeyup = function(event) {
 		}
 	}
 	for (var i=0; i<game.currentWord.length; i++){
-		if (game.currentWord[i]==currentLetter){
-			game.currentBoard[i] = currentLetter.toUpperCase();
+		if (game.currentWord.charAt(i)==currentLetter){
+			game.currentBoard = game.currentBoard.replaceAt(i, currentLetter.toUpperCase());
 		}
 	}
 	game.usedLetters.push(currentLetter);
