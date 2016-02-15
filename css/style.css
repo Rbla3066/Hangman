@@ -10,6 +10,8 @@
 	border-style: double;
 	border-width: 5px;
 	background-color: #aecc4b;
+	animation-name: bounceInThree;
+	animation-duration: 6s;
 }
 #hangman {
 	color: white;
@@ -21,12 +23,16 @@
 	font-family: 'Indie Flower', cursive;
 	letter-spacing: 10px;
 	margin-left: 150px;
+	animation-name: bounceIn;
+	animation-duration: 3s;
 }
 #monkey {
 	color: black;
 	font: 36px;
 	font-family: 'Indie Flower', cursive;
 	margin-left: 355px;
+	animation-name: bounceInTwo;
+	animation-duration: 4s;
 }
 #header {
 	margin-bottom: 100px;
@@ -40,6 +46,8 @@
 	color: black;
 	font-size: 20px;
 	margin-top:14px;
+	animation-name: bounceInThree;
+	animation-duration: 6s;
 }
 #board {
 	letter-spacing: 25px;
@@ -80,4 +88,51 @@
 }
 #used-letters {
 	letter-spacing: 5px;
+}
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1) rotate(0deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) rotate(360deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounceInTwo {
+	0% {
+		transform: scale(0.001);
+		opacity: 0;
+	}
+	75% {
+		transform: scale(0.1);
+		opacity: 0;
+	}
+	90% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes bounceInThree {
+	0% {
+		transform: scale(0.001);
+		opacity: 0;
+	}
+	66% {
+		transform: scale(0.1);
+		opacity: 0;
+	}
+	86% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+	}
 }

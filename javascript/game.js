@@ -71,6 +71,7 @@ document.onkeyup = function(event) {
 			if (game.winCheck()){
 				game.wins++;
 			}
+			game.currentBoard = game.currentWord.toUpperCase();
 			document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
 			document.querySelector("#info-screen").innerHTML = bio[game.currentWord];
 		}
