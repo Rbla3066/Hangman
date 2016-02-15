@@ -33,7 +33,7 @@ var game = {
 		game.currentBoard = newBoard;
 		game.guesses = 12;
 		game.usedLetters = [];
-		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey12.png" id="monkey-pic">'
+		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey12.png" id="monkey-pic">';
 		document.querySelector("#board").innerHTML = game.currentBoard;
 		document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
 		document.querySelector("#used-letters").innerHTML = "<br>";
@@ -90,6 +90,7 @@ document.onkeyup = function(event) {
 			game.currentBoard = game.currentWord.toUpperCase();
 			document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
 			document.querySelector("#info-screen").innerHTML = bio[game.currentWord];
+			game.guesses = 0;
 		}
 		document.querySelector("#board").innerHTML = game.currentBoard;
 		document.querySelector("#used-letters").innerHTML = game.usedLetters;
