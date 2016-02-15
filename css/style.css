@@ -13,6 +13,9 @@
 	animation-name: bounceInThree;
 	animation-duration: 6s;
 }
+#browser {
+	display: none;
+}
 #hangman {
 	color: white;
 	font-size: 64px;
@@ -155,5 +158,13 @@
 	}
 	100% {
 		transform: scale(1);
+	}
+}
+@media screen and (max-width:1100px) {
+	#wrapper {
+		display: none;
+	}
+	#browser {
+		display: initial;
 	}
 }
