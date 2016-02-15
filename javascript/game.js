@@ -1,4 +1,3 @@
-
 var bio = {
 	spider : "<img src=\"images/spider.jpg\" id=\"photo\"><br>The Spider monkey is native to Central and South America and found in tropical forests. They are known for their long limbs.<audio autoplay><source src=\"audio/spider.wav\" type=\"audio/mpeg\"></audio>",
 	gorilla : "<img src=\"images/gorilla.jpg\" id=\"photo\"><br>The Gorilla is a ground dwelling ape native to Africa. Males are known to be aggressive. Hear the sound of them pounding on their chest.<audio autoplay><source src=\"audio/gorilla.wav\" type=\"audio/mpeg\"></audio>",
@@ -8,19 +7,25 @@ var bio = {
 	macaque : "<img src=\"images/macaque.jpg\" id=\"photo\"><br>The Macaque is the most widespread primate in the world apart from humans. They are known to live in densely populated cities, stealing food from local vendors. They have even been seen trading stolen jewelry for food. Bad monkeys!<audio autoplay><source src=\"audio/macaque.wav\" type=\"audio/mpeg\"></audio>",
 	howler : "<img src=\"images/howler.jpg\" id=\"photo\"><br>The Howler monkey is native to South and Central South America. They are known for their loud 'howl' call. The sound can travel up to a mile.<audio autoplay><source src=\"audio/howler.wav\" type=\"audio/mpeg\"></audio>"
 }
-
-
 var game = {
 	'wins' : 0,
-	'currentBoard' : '______',
+	'currentBoard' : '',
 	'usedLetters' : [],
 	'words' : ["spider","baboon","gorilla","howler","macaque","proboscis","orangutan"],
 	'guesses' : 12,
-	'currentWord' : 'spider',
+	'currentWord' : '',
 	'gameNumber' : 0,
 	newGame : function(){
-		game.gameNumber++;
-		game.currentWord = game.words[game.gameNumber];
+		var position = game.words.indexOf(game.currentWord);
+		var newWords = [];
+		for (var ii=0; ii<game.words.length; ii++){
+			if (ii != position){
+				newWords.push(game.words[ii]);
+			}
+		}
+		game.words = newWords;
+		var index = Math.floor(Math.random() * game.words.length);
+		game.currentWord = game.words[index];
 		var newBoard = "";
 		for(var i=0; i<game.currentWord.length; i++){
 			newBoard += "_";
@@ -41,6 +46,16 @@ var game = {
 		}
 		return true;
 	}
+}
+window.onload = function () {
+	var index = Math.floor(Math.random() * game.words.length);
+	game.currentWord = game.words[index];
+	var newBoard = "";
+	for(var i=0; i<game.currentWord.length; i++){
+		newBoard += "_";
+	}
+	game.currentBoard = newBoard;
+	document.querySelector("#board").innerHTML = game.currentBoard;
 }
 function isLetter(str) {
   return str.length === 1 && str.match(/[a-z]/i);
