@@ -4,8 +4,8 @@ var bio = {
 	baboon : "<img src=\"images/baboon.jpg\" id=\"photo\"><br>The Baboon is native to Africa. They are known for their really bizzare behinds!<audio autoplay><source src=\"audio/baboon.wav\" type=\"audio/mpeg\"></audio>",
 	proboscis : "<img src=\"images/proboscis.jpg\" id=\"photo\"><br>The Proboscis monkey is native to Indonesia. They are best known for their strange noses, growing up to 4 inches!<audio autoplay><source src=\"audio/proboscis.wav\" type=\"audio/mpeg\"></audio>",
 	orangutan : "<img src=\"images/orangutan.jpg\" id=\"photo\"><br>The Orangutan is an ape native to Indonesia and Malaysia. They are among the most intelligent primates, using tools and even constructing their own beds from branches and leaves!<audio autoplay><source src=\"audio/proboscis.wav\" type=\"audio/mpeg\"></audio>",
-	macaque : "<img src=\"images/macaque.jpg\" id=\"photo\"><br>The Macaque is the most widespread primate in the world apart from humans. They are known to live in densely populated cities, stealing food from local vendors. They have even been seen trading stolen jewelry for food. Bad monkeys!<audio autoplay><source src=\"audio/macaque.wav\" type=\"audio/mpeg\"></audio>",
-	howler : "<img src=\"images/howler.jpg\" id=\"photo\"><br>The Howler monkey is native to South and Central South America. They are known for their loud 'howl' call. The sound can travel up to a mile.<audio autoplay><source src=\"audio/howler.wav\" type=\"audio/mpeg\"></audio>"
+	macaque : "<img src=\"images/macaque.jpg\" id=\"photo\"><br>The Macaque is the most widespread primate in the world apart from humans, sometimes living in densely populated cities. They are known to be theives and have even been seen trading stolen jewelry for food. Bad monkeys!<audio autoplay><source src=\"audio/macaque.wav\" type=\"audio/mpeg\"></audio>",
+	howler : "<img src=\"images/howler.jpg\" id=\"photo\"><br>The Howler monkey is native to South and Central South America. They are known for their loud 'howl' call. The sound can travel up to three miles.<audio autoplay><source src=\"audio/howler.wav\" type=\"audio/mpeg\"></audio>"
 }
 var game = {
 	'wins' : 0,
@@ -33,6 +33,7 @@ var game = {
 		game.currentBoard = newBoard;
 		game.guesses = 12;
 		game.usedLetters = [];
+		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey12.png" id="monkey-pic">'
 		document.querySelector("#board").innerHTML = game.currentBoard;
 		document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
 		document.querySelector("#used-letters").innerHTML = "<br>";
@@ -93,5 +94,6 @@ document.onkeyup = function(event) {
 		document.querySelector("#board").innerHTML = game.currentBoard;
 		document.querySelector("#used-letters").innerHTML = game.usedLetters;
 		document.querySelector("#guesses").innerHTML = "Guesses left: " + game.guesses;
+		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey' + game.guesses + '.png" id="monkey-pic">';
 	}
 }
