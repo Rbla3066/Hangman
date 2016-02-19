@@ -33,6 +33,7 @@ var game = {
 		game.currentBoard = newBoard;
 		game.guesses = 12;
 		game.usedLetters = [];
+		document.querySelector("#lower-game-screen").innerHTML = 'Letters used:<div id="used-letters"><br></div><div id="guesses">Guesses Left: 12</div><div id="wins">Wins: 0</div>';
 		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey12.png" id="monkey-pic">';
 		document.querySelector("#board").innerHTML = game.currentBoard;
 		document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
@@ -56,7 +57,7 @@ window.onload = function () {
 		newBoard += "_";
 	}
 	game.currentBoard = newBoard;
-	document.querySelector("#board").innerHTML = game.currentBoard;
+	document.querySelector("#board").innerHTML = "<div style='animation-name: bounceInTwo; animation-duration: 3s; display: initial'>"+game.currentBoard+"</div>";
 }
 function isLetter(str) {
   return str.length === 1 && str.match(/[a-z]/i);
@@ -65,7 +66,8 @@ String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
 document.onkeyup = function(event) {
-	if (game.guesses == 0 || game.winCheck()){
+	var winBool = game.winCheck();
+	if (game.guesses == 0 || winBool){
 		game.newGame();
 		return;
 	}
@@ -83,18 +85,28 @@ document.onkeyup = function(event) {
 		}
 		game.usedLetters.push(currentLetter);
 		game.guesses--;
-		if(game.winCheck() || game.guesses == 0){
+		winBool = game.winCheck();
+		if(winBool || game.guesses == 0){
 			if (game.winCheck()){
 				game.wins++;
 			}
+			var interval = setInterval(infoScreen, 800);
+			document.querySelector("#info-screen").innerHTML = '<div style="animation-name: bounceOut; animation-duration: 1s;">'+ document.getElementById("info-screen").innerHTML + '</div>';
+			function infoScreen(){
+				document.querySelector("#info-screen").innerHTML = "<div style='animation-name: bounceIn; animation-duration: 1s;'>"+bio[game.currentWord];+"</div>";
+				clearInterval(interval);
+			}
 			game.currentBoard = game.currentWord.toUpperCase();
 			document.querySelector("#wins").innerHTML = "Wins: "+game.wins;
-			document.querySelector("#info-screen").innerHTML = bio[game.currentWord];
 			game.guesses = 0;
 		}
-		document.querySelector("#board").innerHTML = game.currentBoard;
-		document.querySelector("#used-letters").innerHTML = game.usedLetters;
-		document.querySelector("#guesses").innerHTML = "Guesses left: " + game.guesses;
+		if(winBool){
+			document.querySelector("#lower-game-screen").innerHTML = "<div id='winning' style='animation-name: bounceInSix; animation-duration: 0.5s; animation-iteration-count: infinite;'><p id='you-win'>YOU WON!!!</p><div id='used-letters'></div><div id='guesses'></div><div id='wins'></div></div>";
+		} else {
+			document.querySelector("#used-letters").innerHTML = game.usedLetters;
+			document.querySelector("#guesses").innerHTML = "Guesses left: " + game.guesses;
+		}
+		document.querySelector("#board").innerHTML = "<div style='animation-name: bounceInFive; animation-duration: 0.5s; border-style: dotted; border-width: 0px; border-color: green;'>"+game.currentBoard+"</div>";
 		document.querySelector("#monkey-div").innerHTML = '<img src="images/monkey' + game.guesses + '.png" id="monkey-pic">';
 	}
 }

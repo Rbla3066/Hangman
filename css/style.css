@@ -102,6 +102,13 @@
 #used-letters {
 	letter-spacing: 5px;
 }
+#winning {
+	font-size: 60px;
+	height: 126px;
+}
+#you-win {
+	margin-top: 10px;
+}
 @keyframes bounceIn {
   0% {
     transform: scale(0.1) rotate(0deg);
@@ -150,17 +157,85 @@
 	0% {
 		transform: scale(0.001);
 		opacity: 0;
+		color: green;
 	}
 	66% {
 		transform: scale(0.1) rotate(0deg);
 		opacity: 0;
+		color: black;
+	}
+	75% {
+		color: green;
+	}
+	80%{
+		color: black;
 	}
 	86% {
 		transform: scale(1.7) rotate(360deg);
 		opacity: 1;
+		color: green;
+	}
+	90% {
+		color: black;
+	}
+	95% {
+		color: green;
 	}
 	100% {
 		transform: scale(1);
+		color: black;
+	}
+}
+@keyframes bounceInFive {
+	0% {
+		letter-spacing: 25px;
+	}
+	50% {
+		letter-spacing: 30px ;
+	}
+	100% {
+		letter-spacing: 25px;
+	}
+}
+@keyframes bounceInSix {
+	0% {
+		color: red;
+		font-size: 60px;
+	}
+	20% {
+		color: orange;
+		font-size: 62px;
+	}
+	40% {
+		color: yellow;
+		font-size: 64px;
+	}
+	60% {
+		color: green;
+		font-size: 64px;
+	}
+	80% {
+		color: blue;
+		font-size: 62px;
+	}
+	100% {
+		color: red;
+		font-size: 60px;
+	}
+
+}
+@keyframes bounceOut {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	44% {
+		transform: scale(0.1);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(0.001);
+		opacity: 0;
 	}
 }
 @media screen and (max-width:1100px) {
